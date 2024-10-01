@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Classification"
+title: "[ML] Classification"
 date: 2024-09-29 12:00:00 +0900
 categories: Machine_Learning
 use_math: true

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CH1. Computer Abstractions and Technology"
+title: "[CA] Computer Abstractions and Technology"
 date: 2024-09-19 12:00:00 +0900
 categories: Computer_Architecture
 ---
