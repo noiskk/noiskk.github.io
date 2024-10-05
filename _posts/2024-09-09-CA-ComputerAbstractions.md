@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[CA] Computer Abstractions and Technology"
-date: 2024-09-19 12:00:00 +0900
+date: 2024-09-09 12:00:00 +0900
 categories: Computer_Architecture
 ---
 ## *Computer Abstractions and Technology*
@@ -13,7 +13,7 @@ categories: Computer_Architecture
 Moore's Law 무어의 법칙
 : 컴퓨터의 용량(성능 X)은 18~24개월마다 2배씩 증가한다는 법칙 <br><br>
 
-> **Class of Computers 컴퓨터의 종류**
+**Class of Computers 컴퓨터의 종류**
 
 - **Desktop(personal) computers** = PC
 - **Server computers** <br>
@@ -37,7 +37,7 @@ Moore's Law 무어의 법칙
 Random access : 칩이 어디에 있든, 어느 용량이든 동일한 응답 속도를 보장해줌 <br>
 반면 HDD는 위치에 따라 시간이 차이날 수 있음 (Sequential access)<br><br>
 
-> **저장장치의 종류**
+**저장장치의 종류**
 
 |       |    주기억장치   |   |    보조기억장치 | 
 |-------------------|----------------|--------------|----------------------------|-------------------------|
@@ -48,7 +48,8 @@ Random access : 칩이 어디에 있든, 어느 용량이든 동일한 응답 �
 
 
 <br>
-> **메모리 및 저장 장치의 동작 과정**
+
+**메모리 및 저장 장치의 동작 과정**
 
 1. ROM (Read-Only Memory)
 - ROM은 읽기 전용 메모리로, 시스템의 기본적인 정보를 저장한다.
@@ -69,7 +70,7 @@ Random access : 칩이 어디에 있든, 어느 용량이든 동일한 응답 �
 ------------
 <br>
 
-> **단일 cpu 코어의 성능 발전 속도**
+**단일 cpu 코어의 성능 발전 속도**
 
 초기 25% : 반도체 공정기술에 따라 성장했다. <br>
 중기 52% : 급격한 발전은 컴퓨터구조에 대한 이론 연구가 활발이 진행되고 적용되었기 때문이다. <br>
@@ -91,7 +92,7 @@ ISA(Instruction Set Architecture)란?
 
 <br><br>
 
-> **Eight Great Ideas**
+**Eight Great Ideas**
 
 1. Design for ***Moore's Law***
 2. Use ***abstraction*** to simplify design
@@ -107,25 +108,26 @@ ISA(Instruction Set Architecture)란?
 
 --------------------
 
+<br><br>
 
 ## **Data in the Computer**
 
 컴퓨터에서 데이터를 표현하고 저장하는 데 사용되는 기본 단위들에는 **비트(bit)**, **바이트(byte)**, **워드(word)** 등이 있다.
 <br><br>
 
-> **bit**
+**bit**
 
 - **가장 작은 데이터 단위** 이다. 
 - 하나의 bit는 **0 또는 1**을 나타낸다.
 
->  **byte**
+**byte**
 
 - **8bits**로 구성된 단위이다. (8bits = 1byte)
 - 256개의 서로 다른 값을 나타낼 수 있다. ($$2^{8}=256$$)
 - 컴퓨터에서 **문자**(예: ASCII 문자 하나)를 표현하거나 **작은 데이터를 저장**하는 데 주로 사용된다.
 - 메모리의 주소는 1byte 단위이다. 
 
-> **word**
+**word**
 
 - **CPU 아키텍처에 따라 크기가 다른 데이터 단위**이다.
 - 일반적으로 **32-bit(4-byte)** 또는 **64-bit(8-byte)**를 의미한다.

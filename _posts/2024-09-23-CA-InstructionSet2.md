@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[CA] Instruction Set 2"
-date: 2024-09-27 12:00:00 +0900
+date: 2024-09-23 12:00:00 +0900
 categories: Computer_Architecture
 ---
 # Arithmetic instructions (연산 명령어)
@@ -114,7 +114,7 @@ categories: Computer_Architecture
 ----
 <br>
 
-### Ex1. Compling If Statements.
+### Ex. Compling If Statements.
 
 ```
 C code:
@@ -134,7 +134,7 @@ Else: SUB X19, X20, X21
 Exit: ...
 ```
 
-### Ex2. Compling Loop Statements.
+### Ex. Compling Loop Statements.
 
 ```
 C code:
@@ -152,9 +152,169 @@ Loop: LSL X10, X22, #3
       B Loop
 Exit: ...
 ```
-
-
 ----
+
+<br>
+
+### More Conditional Operatoins
+
+
+**Flags (조건 코드)**
+
+S-suffix
+: S가 붙어있는 산술 명령어 ( ex. ADDS, ADDIS, ANDS ...) 는 명령어 수행 중 발생한 상황을 기록한다. <br>기록된 상황은 CC Test 에 사용되고 상황은 다음과 같다. 
+- negative(N) : 결과의 MSB 가 1 (음수)
+- zero (Z) : 결과가 0
+- overflow (V) : 결과가 범위를 초과
+- carry (C) : 결과가 MSB 에서 carryout 발생
+
+
+SUBS(빼기) 연산을 사용해 flags 를 설정한 후 조건부 분기를 수행한다. 
+
+- B.EQ: 같을 때
+- B.NE: 다를 때
+- B.LT: 작을 때(부호 있는)
+- B.LO: 작을 때(부호 없는)
+- B.LE: 작거나 같을 때(부호 있는)
+- B.LS: 작거나 같을 때(부호 없는)
+- B.GT: 클 때(부호 있는)
+- B.HI: 클 때(부호 없는)
+- B.GE: 크거나 같을 때(부호 있는)
+- B.HS: 크거나 같을 때(부호 없는)
+
+### Ex. if statement
+
+```
+C code:
+if (a > b) a += 1;
+
+(a, b in X22, X23)
+
+Complied LEGv8 code:
+      SUBS X9, X22, X23
+      B.LE Exit
+      ADDI X22, X22, #1
+Exit: ...
+```
+-----
+<br>
+
+### Procedure Calling (함수 호출)
+
+**Procedure Call:** branch and link
+: BL ProcedureLabel
+
+**Procedure Return:** branch and register
+: BR LR <br>
+여기서 LR 은 link register (return address) 를 말함. <br>
+X28 : stack pointer (SP)<br>
+X29 : frame pointer (FP)<br>
+X30 : link register (LR)<br>
+
+
+### Ex. Leaf Procedure
+
+```
+C code:
+long long int leaf_example (long long int g, long
+long int h, long long int i, long long int j)
+{
+long long int f;
+f = (g + h) - (i + j);
+return f;
+}
+
+g, h, i, j in X0, X1, X2, X3
+f in X19 (hence, need to save it on stack)
+We will use two temporary registers: X9, X10 (need to save them
+on stack)
+
+
+Complied LEGv8 code:
+leaf_example:
+SUBI SP,SP,#24      // Save X10, X9, X19 on stack
+STUR X10,[SP,#16]
+STUR X9,[SP,#8]
+STUR X19,[SP,#0]
+ADD X9,X0,X1        // X9 = g + h
+ADD X10,X2,X3       // X10 = i + j
+SUB X19,X9,X10      // f = X9 - X10
+ADD X0,X19,XZR      // copy f to return register
+LDUR X10,[SP,#16]   // Restore X10, X9, X19 from stack
+LDUR X9,[SP,#8]
+LDUR X19,[SP,#0]
+ADDI SP,SP,#24
+BR LR               // Return to caller
+```
+
+<br>
+
+### Non-Leaf Procedures
+
+```
+C code:
+int fact (int n)
+{
+if (n < 1) return (1);
+else return n * fact(n - 1);
+}
+
+n in X0
+Result in X1
+
+
+Complied LEGv8 code:
+fact:
+  SUBI SP,SP,#16      // Save return address and n on stack
+  STUR LR,[SP,#8]
+  STUR X0,[SP,#0]
+  SUBIS XZR,X0,#1     // compare n and 1
+  B.GE L1             // if n >= 1, go to L1
+  ADDI X1,XZR,#1      // Else, set return value to 1
+  ADDI SP,SP,#16      // Pop stack, don’t bother restoring values
+  BR LR               // Return
+L1: SUBI X0,X0,#1     // n = n - 1
+  BL fact             // call fact(n-1)
+  LDUR X0,[SP,#0]     // Restore caller’s n
+  LDUR LR,[SP,#8]     // Restore caller’s return address
+  ADDI SP,SP,#16      // Pop stack
+  MUL X1,X0,X1        // return n * fact(n-1)
+  BR LR               // return
+```
+
+
+------
+
+### Ex. String Copy
+
+```
+C code:
+void strcpy (char x[], char y[]) {
+size_t i;
+i = 0;
+while ((x[i]=y[i])!='\0')
+i += 1;
+}
+
+(array x, array y, i in X0, X1, X19)
+
+Complied LEGv8 code:
+strcpy:
+    SUBI SP,SP,8        // push X19
+    STUR X19,[SP,#0]
+    ADD X19,XZR,XZR     // i=0
+L1: ADD X10,X19,X1      // X10 = addr of y[i]
+    LDURB X11,[X10,#0]  // X11 = y[i]
+    ADD X12,X19,X0      // X12 = addr of x[i]
+    STURB X11,[X12,#0]  // x[i] = y[i]
+    CBZ X11,L2          // if y[i] == 0 then exit
+    ADDI X19,X19,#1     // i = i + 1
+    B L1                // next iteration of loop
+L2: LDUR X19,[SP,#0]    // restore saved X19
+    ADDI SP,SP,8        // pop 1 item from stack
+    BR LR               // and return
+```
+
 <br>
 
 ### Synchronization

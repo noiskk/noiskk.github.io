@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[CA] Instruction Set 3"
-date: 2024-09-27 12:00:00 +0900
+date: 2024-09-23 12:00:00 +0900
 categories: Computer_Architecture
 ---
 ## Translating and Starting a Program

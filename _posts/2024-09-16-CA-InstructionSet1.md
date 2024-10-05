@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[CA] Instruction Set 1"
-date: 2024-09-27 12:00:00 +0900
+date: 2024-09-16 12:00:00 +0900
 categories: Computer_Architecture
 use_math: true
 ---
