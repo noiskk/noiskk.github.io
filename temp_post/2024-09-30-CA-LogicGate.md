@@ -10,3 +10,12 @@ categories: Computer_Architecture
 
 컴퓨터는 0과 1로 모든 연산을 한다. 
 Switch를 켜고 끄는 개념. 
+
+<br>
+
+-----
+
+<br>
+
+### Adder
+
