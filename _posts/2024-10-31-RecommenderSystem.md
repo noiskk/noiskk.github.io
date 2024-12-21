@@ -2,7 +2,7 @@
 layout: post
 title: "Recommender System"
 date: 2024-10-31 00:00:00 +0900
-categories: etc
+categories: ML
 ---
 
 # 추천시스템이란?
