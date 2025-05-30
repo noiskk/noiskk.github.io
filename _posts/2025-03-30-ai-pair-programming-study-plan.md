@@ -5,12 +5,14 @@ date: 2025-03-30 12:00:00 +0900
 categories: Study-Log
 ---
 
-> GPT의 도움을 받아 코딩하는게 일상이 되어버렸다.
-> 내가 AI의 코딩실력을 이기는건 불가능해 보인다.
-> 이길 수 없다면 내 편으로 만들어야 한다! 😎
-> Pair Programming (짝 프로그래밍) 이라는 개념을 들어본 적이 있다.
-> 두 명이 짝을 이뤄 서로의 코드를 리뷰해주며 개발하는 방법이다.
-> AI와 짝을 맺어 AI Pair-Programming 을 시작해 보려고한다.
+> GPT의 도움을 받아 코딩하는게 일상이 되어버렸다. <br>
+> 내가 AI의 코딩실력을 이기는건 불가능해 보인다. <br>
+> 이길 수 없다면 내 편으로 만들어야 한다! <br>
+> Pair Programming (짝 프로그래밍) 이라는 개념을 들어본 적이 있다. <br>
+> 두 명이 짝을 이뤄 서로의 코드를 리뷰해주며 개발하는 방법이다. <br>
+> AI와 짝을 맺어 AI Pair-Programming 을 시작해 보려고한다. <br>
+
+<br>
 
 ## 1 | AI Pair-Programming이란?
 
@@ -24,7 +26,11 @@ categories: Study-Log
 2. **즉시 피드백** : “왜 이렇게 동작해?” 를 AI에게 즉시 묻고 실험 → 개념 정착
 3. **문서화 습관** : AI가 만든 코드·답변을 블로그에 정리하며 *근거*까지 남김
 
+<br>
+
 ---
+
+<br>
 
 ## 2 | 로드맵 - 성장 플랜
 
@@ -36,7 +42,11 @@ categories: Study-Log
 | **④ AI Plug‑in / MLOps** | **4 주**  | OpenAI API 연동, Prompt Engineering, FastAPI or Spring WebFlux 서빙, 모델 버전 관리 | “문의 자동 답변” 모듈 + MLOps 파이프라인 데모                   |
 | **⑤ Interview Polish**   | **4 주**  | CS 정리, 시스템 설계 스터디, 모의 면접, 영어 OPIc IH                                      | LeetCode Top100, 모의 면접 5 회 피드백 글                 |
 
+<br>
+
 ---
+
+<br>
 
 ## 3 | AI 활용 루틴
 
@@ -46,9 +56,11 @@ categories: Study-Log
 4. **리뷰 기록**    : PR Description에 *프롬프트/응답 요약* 첨부
 5. **블로그 작성** : ▸ 개념 ▸ 왜? ▸ 코드 ▸ 회고(실험 결과) 4-단락 템플릿
 
-> 하루에 최소 **하나**는 “AI에게 질문 → 직접 검증” 사이클을 돌린 뒤 블로그에 남기는 것이 목표.
+<br>
 
 ---
+
+<br>
 
 ## 4 | AI Pair‑Programming 운영 규칙
 
