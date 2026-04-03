@@ -54,19 +54,19 @@ export interface Project {
 }
 
 export async function fetchProjects(): Promise<Project[]> {
-  const res = await fetch(`${BASE_URL}/api/projects`);
+  const res = await fetch(`${BASE_URL}/api/projects`, { signal: AbortSignal.timeout(5000) });
   if (!res.ok) throw new Error('Failed to fetch projects');
   return res.json();
 }
 
 export async function fetchProject(id: number): Promise<Project> {
-  const res = await fetch(`${BASE_URL}/api/projects/${id}`);
+  const res = await fetch(`${BASE_URL}/api/projects/${id}`, { signal: AbortSignal.timeout(5000) });
   if (!res.ok) throw new Error('Failed to fetch project');
   return res.json();
 }
 
 export async function fetchReadme(id: number): Promise<string | null> {
-  const res = await fetch(`${BASE_URL}/api/projects/${id}/readme`);
+  const res = await fetch(`${BASE_URL}/api/projects/${id}/readme`, { signal: AbortSignal.timeout(5000) });
   if (!res.ok) return null;
   return res.text();
 }
